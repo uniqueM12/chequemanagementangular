@@ -1,0 +1,28 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #chequeForm="ngForm">
+      <div class="form-group">
+        <label for="bankName">Bank Name</label>
+        <input type="text" [(ngModel)]="cheque.bankName"
+               class="form-control" id="bankName" name="bankName" placeholder="Enter the bank name"
+               required #bankName="ngModel">
+      </div>
+      <div [hidden]="!bankName.pristine" class="alert alert-danger">Bank name is required</div>
+      <div class="form-group">
+        <label for="prefix">Prefix</label>
+        <input type="text" [(ngModel)]="cheque.prefix"
+               class="form-control" id="prefix" name="prefix" placeholder="First digits of the cheque"
+               required #prefix="ngModel">
+      </div>
+      <div [hidden]="!prefix.pristine" class="alert alert-danger">Prefix is required</div>
+      <div class="form-group">
+        <label for="suffix">Suffix</label>
+        <input type="text" [(ngModel)]="cheque.suffix"
+               class="form-control" id="suffix" name="suffix" placeholder="Last digits of the cheque"
+               required #suffix="ngModel">
+      </div>
+      <div [hidden]="!suffix.pristine" class="alert alert-danger">Suffix is required</div>
+      <button type="submit" [disabled]="!chequeForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
