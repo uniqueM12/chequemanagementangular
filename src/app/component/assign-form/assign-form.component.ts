@@ -15,10 +15,12 @@ export class AssignFormComponent implements OnInit {
 
   cheque: Cheque;
   managers = [];
+  cheques = [];
 
   constructor(private router: Router, private chequeService: ChequeService, private userService: UserService) {
     this.cheque = new Cheque();
     this.managers = this.branchManagers();
+    this.cheques = this.availableCheques();
   }
   onSubmit() {
     console.log('reacjing here ' + this.cheque.prefix);
@@ -30,13 +32,23 @@ export class AssignFormComponent implements OnInit {
   }
 
   branchManagers(): Observable<User[]> {
-    console.log(this.userService.findAll());
-    return this.userService.findAll();
-    // [
-    //   {value: '1', name: 'Loan Officer'},
-    //   {value: '2', name: 'Branch Manager'},
-    //   {value: 'ADMIN', name: 'Admin'}
-    // ];
+    // console.log(this.userService.findAll());
+    // return this.userService.findAll();
+    return [
+      {value: '1', name: 'Banker1'},
+      {value: '2', name: 'Banker2'},
+      {value: '3', name: 'Banker3'}
+    ];
+  }
+
+  availableCheques(): Observable<Cheque[]> {
+    // console.log(this.chequeService.findAll());
+    // return this.chequeService.findAll();
+    return [
+      {value: '1', name: 'Cheque1'},
+      {value: '2', name: 'Cheque2'},
+      {value: '3', name: 'Cheque3'}
+    ];
   }
 
   ngOnInit() {
