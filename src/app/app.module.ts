@@ -12,6 +12,7 @@ import { ChequeFormComponent } from './component/cheque-form/cheque-form.compone
 import { ChequeListComponent } from './component/cheque-list/cheque-list.component';
 import {ChequeService} from './service/cheque.service';
 import { AssignFormComponent } from './component/assign-form/assign-form.component';
+import {UserComponent} from './component/user/user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AssignFormComponent } from './component/assign-form/assign-form.compone
     UserFormComponent,
     ChequeFormComponent,
     ChequeListComponent,
-    AssignFormComponent
+    AssignFormComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

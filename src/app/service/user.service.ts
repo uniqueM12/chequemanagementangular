@@ -11,6 +11,7 @@ export class UserService {
   private listUsers: string;
   private addUser: string;
   private getUser: string;
+  user: User = new User();
 
   constructor(private http: HttpClient) {
     this.listUsers = 'http://localhost:8080/users';
@@ -20,8 +21,9 @@ export class UserService {
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.listUsers);
   }
-  public getUserById(id: string) {
-    return this.http.post<User>(this.getUser, id);
+  public getUserById(id: string): Observable<User> {
+    this.user.id = id;
+    return this.http.post<User>(this.getUser, this.user);
   }
   public save(user: User) {
     return this.http.post<User>(this.addUser, user);

@@ -9,14 +9,6 @@
         <th scope="col">Suffix</th>
       </tr>
       </thead>
-      <tbody>
-      <tr *ngFor="let cheque of cheques">
-        <td>{{cheque.id}}</td>
-        <td>{{cheque.bankName}}</td>
-        <td>{{cheque.prefix}}</td>
-        <td>{{cheque.suffix}}</td>
-      </tr>
-      </tbody>
       <tfoot class="thead-dark">
       <tr>
         <th scope="col">ID</th>
@@ -25,6 +17,14 @@
         <th scope="col">Suffix</th>
       </tr>
       </tfoot>
+      <tbody>
+      <tr *ngFor="let cheque of cheques">
+        <td>{{cheque.id}}</td>
+        <td>{{cheque.bankName}}</td>
+        <td>{{cheque.prefix}}</td>
+        <td>{{cheque.suffix}}</td>
+      </tr>
+      </tbody>
     </table>
   </div>
 </div>
