@@ -11,11 +11,13 @@ export class ChequeService {
   private createCheque: string;
   private listCheques: string;
   private assignCheque: string;
+  private unassigned: string;
 
   constructor(private http: HttpClient) {
     this.createCheque = 'http://localhost:8080/createcheque';
     this.listCheques = 'http://localhost:8080/cheques';
     this.assignCheque = 'http://localhost:8080/assign';
+    this.unassigned = 'http://localhost:8080/unassigned';
   }
 
   public findAll(): Observable<Cheque[]> {
@@ -28,5 +30,9 @@ export class ChequeService {
 
   public assign(cheque: Cheque) {
     return this.http.post<Cheque>(this.assignCheque, cheque);
+  }
+
+  public findUnassigned(): Observable<Cheque[]> {
+    return this.http.get<Cheque[]>(this.unassigned);
   }
 }

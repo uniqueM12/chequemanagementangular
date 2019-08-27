@@ -14,16 +14,15 @@ import { Observable } from 'rxjs/Observable';
 export class AssignFormComponent implements OnInit {
 
   cheque: Cheque;
-  managers = [];
-  cheques = [];
+  managers: User[];
+  cheques: Cheque[];
 
   constructor(private router: Router, private chequeService: ChequeService, private userService: UserService) {
     this.cheque = new Cheque();
-    this.managers = this.branchManagers();
-    this.cheques = this.availableCheques();
+    // this.managers = this.branchManagers();
+    // this.cheques = this.availableCheques();
   }
   onSubmit() {
-    console.log('reacjing here ' + this.cheque.prefix);
     this.chequeService.assign(this.cheque).subscribe(result => this.gotoChequeList());
   }
 
@@ -31,27 +30,13 @@ export class AssignFormComponent implements OnInit {
     this.router.navigate(['/cheques']);
   }
 
-  branchManagers(): Observable<User[]> {
-    // console.log(this.userService.findAll());
-    // return this.userService.findAll();
-    return [
-      {value: '1', name: 'Banker1'},
-      {value: '2', name: 'Banker2'},
-      {value: '3', name: 'Banker3'}
-    ];
-  }
-
-  availableCheques(): Observable<Cheque[]> {
-    // console.log(this.chequeService.findAll());
-    // return this.chequeService.findAll();
-    return [
-      {value: '1', name: 'Cheque1'},
-      {value: '2', name: 'Cheque2'},
-      {value: '3', name: 'Cheque3'}
-    ];
-  }
-
   ngOnInit() {
+    this.userService.findAll().subscribe(data => {
+      this.managers = data;
+    });
+    this.chequeService.findUnassigned().subscribe(data => {
+      this.cheques = data;
+    });
   }
 
 }

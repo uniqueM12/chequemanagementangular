@@ -10,15 +10,15 @@
           </option>
         </select>
       </div>
-      <!--<div class="form-group">
+      <div class="form-group">
         <label for="cheque">Cheque</label>
         <select id="cheque" [(ngModel)]="cheque.id" name="id">
           <option value="">Select a Role</option>
-          <option *ngFor="let order of managers; let i = index" [value]="managers[i].value">
-            {{managers[i].name}}
+          <option *ngFor="let order of cheques; let i = index" [value]="cheques[i].id">
+            {{cheques[i].bankName}}
           </option>
         </select>
-      </div>-->
+      </div>
       <button type="submit" [disabled]="!assignForm.form.valid" class="btn btn-info">Submit</button>
     </form>
   </div>
